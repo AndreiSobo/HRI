@@ -1,5 +1,6 @@
 package org.example.hri;
 
+import javax.print.attribute.standard.Severity;
 import java.util.ArrayList;
 
 public class Robot {
@@ -54,6 +55,50 @@ public class Robot {
         System.out.println("Position: (" + this.x + ", " + this.y + ", " + this.z + ")");
         return coords;
     }
+    public void returnToOrigin() {
+        this.x = 0;
+        this.y = 0;
+        this.z = 0;
+    }
+    // methods for gripper
+    public void openGripper() {
+        System.out.println("Opening gripper");
+    }
+    public void closeGripper() {
+        System.out.println("Closing gripper");
+    }
+    public void pickUpObject_7_0_4() {
+        this.returnToOrigin(); // Ensure the robot starts at the origin
+        this.moveX(-7); // Move 7 cm to the left
+        this.moveZ(4); // Move 4 cm forward
+        this.openGripper(); // Open the gripper
+        this.moveY(2); // Lower the arm 2 cm to reach the object
+        this.closeGripper(); // Close the gripper to pick up the object
+        this.moveY(-2); // Lift the object 2 cm
+        this.returnToOrigin(); // Return to the origin
+    }
+
+    public void pickUpObject4_0_3() {
+        this.returnToOrigin(); // Ensure the robot starts at the origin
+        this.moveX(4); // Move 4 cm to the right
+        this.moveZ(3); // Move 3 cm forward
+        this.openGripper(); // Open the gripper
+        this.moveY(2); // Lower the arm 2 cm to reach the object
+        this.closeGripper(); // Close the gripper to pick up the object
+        this.moveY(-2); // Lift the object 2 cm
+        this.returnToOrigin(); // Return to the origin
+    }
+
+    public void pickUpObject3_0_9Remain() {
+        this.returnToOrigin(); // Ensure the robot starts at the origin
+        this.moveX(3); // Move 3 cm to the right
+        this.moveZ(9); // Move 9 cm forward
+        this.openGripper(); // Open the gripper
+        this.moveY(2); // Lower the arm 2 cm to reach the object
+        this.closeGripper(); // Close the gripper to pick up the object
+        this.moveY(-2); // Lift the object 2 cm
+        // Do not return to origin
+    }
 
     // Main method to create a robot instance and move it to the left by 5 units
     public static void main(String[] args) {
@@ -61,5 +106,10 @@ public class Robot {
         robot.getPosition();
         robot.moveX(5);
         robot.getPosition();
+
+        robot.pickUpObject_7_0_4();
+        robot.pickUpObject4_0_3();
+        robot.pickUpObject3_0_9Remain();
     }
+
 }

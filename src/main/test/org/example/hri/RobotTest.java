@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import static org.hamcrest.Matchers.is;
 
 public class RobotTest {
@@ -22,8 +21,8 @@ public class RobotTest {
     @Test
     public void robotMovesCorrectlyOnYAxis() {
         Robot r = new Robot();
-        r.moveY(4);
-        ArrayList<Double> expectedPosition = new ArrayList<>(Arrays.asList(0.0, 4.0, 0.0));
+        r.moveY(-4);
+        ArrayList<Double> expectedPosition = new ArrayList<>(Arrays.asList(0.0, -4.0, 0.0));
         MatcherAssert.assertThat(r.getPosition(), is(expectedPosition));
     }
 
@@ -59,6 +58,13 @@ public class RobotTest {
         r.moveY(-3);
         r.moveZ(-4);
         ArrayList<Double> expectedPosition = new ArrayList<>(Arrays.asList(0.0, 0.0, 0.0));
+        MatcherAssert.assertThat(r.getPosition(), is(expectedPosition));
+    }
+    @Test
+    public void testPickUpObject3_0_9Remain() {
+        Robot r = new Robot();
+        r.pickUpObject3_0_9Remain();
+        ArrayList<Double> expectedPosition = new ArrayList<>(Arrays.asList(3.0, 0.0, 9.0));
         MatcherAssert.assertThat(r.getPosition(), is(expectedPosition));
     }
 }
