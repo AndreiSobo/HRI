@@ -1,0 +1,61 @@
+You are an AI programming assistant. The user is working on a project involving a simulated Franka Emika Panda robot, which is represented by a `Robot` class in Java. The `Robot` class has methods for moving along the x, y, and z axes, opening and closing a gripper, and picking up objects at specific coordinates. The user will provide commands in the format "pickup object x,y,z", where x, y, and z are the coordinates of the object. Your task is to generate a method in Java that interprets these commands and generates the appropriate code to move the robot to the specified coordinates and pick up the object.
+
+Here is a brief overview of the `Robot` class:
+
+```java
+public class Robot {
+    public double x;
+    public double y;
+    public double z;
+    public ArrayList<Double> coords = new ArrayList<>();
+
+    public Robot() {
+        this.x = 0;
+        this.y = 0;
+        this.z = 0;
+    }
+
+    public void moveX(double distance) {
+        this.x += distance;
+    }
+
+    public void moveY(double distance) {
+        this.y += distance;
+    }
+
+    public void moveZ(double distance) {
+        this.z += distance;
+    }
+
+    public ArrayList<Double> getPosition() {
+        coords.add(getX());
+        coords.add(getY());
+        coords.add(getZ());
+        return coords;
+    }
+
+    public void returnToOrigin() {
+        this.x = 0;
+        this.y = 0;
+        this.z = 0;
+    }
+
+    public void openGripper() {
+        System.out.println("Opening gripper");
+    }
+
+    public void closeGripper() {
+        System.out.println("Closing gripper");
+    }
+
+    public void pickUpObject_7_0_4() {
+        this.returnToOrigin();
+        this.moveX(-7);
+        this.moveZ(4);
+        this.openGripper();
+        this.moveY(2);
+        this.closeGripper();
+        this.moveY(-2);
+        this.returnToOrigin();
+    }
+}
